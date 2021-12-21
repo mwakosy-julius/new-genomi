@@ -9,7 +9,7 @@
         <input class="form-control form-control-dark w-100" v-model="text" type="text" placeholder="Search ...." aria-label="Search">
         <div class="navbar-nav">
           <div class="nav-item text-nowrap">
-            <input type="submit" class="nav-link px-3" value="submit" />
+            <input type="submit" class="nav-link px-3 btn-dark" value="submit" />
           </div>
         </div>
       </form>

@@ -21,11 +21,6 @@
                 Protein
               </nuxt-link>
             </li>
-            <li class="nav-item">
-              <nuxt-link class="nav-link" to="./genome">
-                Genome
-              </nuxt-link>
-            </li>
           </ul>
         </div>
       </nav>
