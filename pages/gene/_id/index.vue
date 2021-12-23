@@ -11,7 +11,7 @@
         </div>
         <div class="genetics d-flex col-md-6 card">
           <div class="card-body">
-            <Doughnut :data="graph.ChartData" :options="graph.ChartOptions" :height="400" />
+            <Doughnut :data="graph.ChartData" :options="graph.ChartOptions" :height=400 />
           </div>          
         </div>
       </div>
@@ -88,6 +88,7 @@ export default {
       console.log(err)
     }
   },  
+
   data(){
     return{
         gene: {},
@@ -113,7 +114,6 @@ export default {
       
   },
   
-
 }
 </script>
 
