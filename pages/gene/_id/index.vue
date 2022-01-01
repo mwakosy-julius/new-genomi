@@ -37,6 +37,55 @@ export default {
     Doughnut
   },
 
+  data(){
+    return{
+        gene: {},
+        Total: "",
+        GC: "",
+        G: "",
+        C: "",
+        T: "",
+        A: "",
+        
+        get graph(){
+          return {
+            ChartData : {
+              labels: ['A', 'C', 'G', 'T'],
+              datasets: [
+                {
+                  label: 'Nucleotides',
+                  backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue],
+                  data: [50, 30, 40, 20],
+                  //data: [this.A, this.C, this.G, this.T],
+                  //data: [],
+                  hoverOffser: 4,
+                  }
+                ]
+            },
+            ChartOptions : {
+              responsive: true,
+              legend: {
+                      display: true,
+                  },
+              title: {
+                    display: true,
+                    text: 'Nucleotide Content'
+                  },responsive: true,
+              legend: {
+                      display: true,
+                  },
+              title: {
+                    display: true,
+                    text: 'Nucleotide Content'
+                  },   
+            },
+          }
+        }
+        
+    }
+      
+  },
+
   async created(){
     const config = {
       headers:{
@@ -54,65 +103,10 @@ export default {
       this.G = (theGene.match(/\G/g) || []).length;
       this.C = (theGene.match(/\C/g) || []).length;
       this.GC = Math.round((this.G + this.C) / this.Total * 100);
-      this.graph.ChartData =  {
-              labels: ['A', 'C', 'G', 'T'],
-              datasets: [
-                {
-                  label: 'Nucleotides',
-                  backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue],
-                  data: [50, 30, 40, 20],
-                  //data: [this.A, this.C, this.G, this.T],
-                  //data: [],
-                  hoverOffser: 4,
-                  }
-                ]
-            };
-      this.graph.ChartOptions = {
-        responsive: true,
-              legend: {
-                      display: true,
-                  },
-              title: {
-                    display: true,
-                    text: 'Nucleotide Content'
-                  },responsive: true,
-              legend: {
-                      display: true,
-                  },
-              title: {
-                    display: true,
-                    text: 'Nucleotide Content'
-                  },
-      }
     }catch (err){
       console.log(err)
     }
-  },  
-
-  data(){
-    return{
-        gene: {},
-        Total: "",
-        GC: "",
-        G: "",
-        C: "",
-        T: "",
-        A: "",
-        
-        get graph(){
-          return {
-            ChartData : {
-              
-            },
-            ChartOptions : {
-                  
-            },
-          }
-        }
-        
-    }
-      
-  },
+  }, 
   
 }
 </script>

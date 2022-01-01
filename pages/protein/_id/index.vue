@@ -49,6 +49,82 @@ export default {
   components:{
     BarChart
   },
+
+  data(){
+    return{
+        gene: {},
+        A: "",
+        C: "",
+        D: "",
+        E: "",
+        F: "",
+        G: "",
+        H: "",
+        I: "",
+        K: "",
+        L: "",
+        M: "",
+        N: "",
+        P: "",
+        Q: "",
+        R: "",
+        S: "",
+        T: "",
+        V: "",
+        W: "",
+        Y: "",
+        
+        get graph(){
+          return{
+            ChartData:{
+              labels: ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'],
+              datasets: [
+                {
+                  label: 'Amino Acids',
+                  backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue, chartColors.orange, 
+                      chartColors.purple, chartColors.grey, chartColors.maroon,
+                      chartColors.navy, chartColors.brown, chartColors.olive, chartColors.teal, chartColors.apricot, chartColors.lavender, chartColors.lime, 
+                      chartColors.cyan, chartColors.magenta, chartColors.pink, chartColors.beige, chartColors.mint,],
+                  //data: [this.A, this.C, this.D, this.E, this.F, this.G, this.H, this.I, this.K, this.L, this.M, this.N, this.P, this.Q, this.R, this.S, this.T, this.V, this.W, this.Y],
+                  data: [5, 3, 4, 2, 6, 8, 7, 5, 4 ,3 , 4, 2 , 4, 5, 9, 7 ,5, 8, 5 ,4 ],
+                  hoverOffser: 4,
+                  }
+                ]
+            },
+            ChartOptions:{
+              responsive: true,
+              legend: {
+                      display: true,
+                  },
+              title: {
+                    display: true,
+                    text: 'Amino Acid Content'
+                  },
+              scales: {
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false
+                    }
+                  }
+                ],
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true
+                    },
+                    gridLines: {
+                      display: false
+                    }
+                  }
+                ]
+              }
+            },
+          }
+        },
+    }
+      
+  },
   
   async created(){
     const config = {
@@ -82,94 +158,9 @@ export default {
       this.V = (theGene.match(/\V/g) || []).length;
       this.W = (theGene.match(/\W/g) || []).length;
       this.Y = (theGene.match(/\Y/g) || []).length;
-
-      this.graph.ChartData =  {
-        labels: ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'],
-        datasets: [
-          {
-            label: 'Amino Acids',
-            // backgroundColor: ["red", "orange", "yellow"],
-            backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue, chartColors.orange, 
-                chartColors.purple, chartColors.grey, chartColors.maroon,
-                chartColors.navy, chartColors.brown, chartColors.olive, chartColors.teal, chartColors.apricot, chartColors.lavender, chartColors.lime, 
-                chartColors.cyan, chartColors.magenta, chartColors.pink, chartColors.beige, chartColors.mint,],
-            //data: [this.A, this.C, this.D, this.E, this.F, this.G, this.H, this.I, this.K, this.L, this.M, this.N, this.P, this.Q, this.R, this.S, this.T, this.V, this.W, this.Y],
-            data: [5, 3, 4, 2, 6, 8, 7, 5, 4 ,3 , 4, 2 , 4, 5, 9, 7 ,5, 8, 5 ,4 ],
-            hoverOffser: 4,
-            }
-          ]
-      };
-
-      this.graph.ChartOptions =  {
-        responsive: true,
-        legend: {
-                display: true,
-            },
-        title: {
-              display: true,
-              text: 'Amino Acid Content'
-            },
-        scales: {
-          xAxes: [
-            {
-              gridLines: {
-                display: false
-              }
-            }
-          ],
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              },
-              gridLines: {
-                display: false
-              }
-            }
-          ]
-        }
-      };
     }catch (err){
       console.log(err)
     }
-  },
-
-  data(){
-    return{
-        gene: {},
-        A: "",
-        C: "",
-        D: "",
-        E: "",
-        F: "",
-        G: "",
-        H: "",
-        I: "",
-        K: "",
-        L: "",
-        M: "",
-        N: "",
-        P: "",
-        Q: "",
-        R: "",
-        S: "",
-        T: "",
-        V: "",
-        W: "",
-        Y: "",
-        
-        get graph(){
-          return{
-            ChartData:{},
-            ChartOptions:{},
-          }
-        },
-
-        
-      
-      
-    }
-      
   },
 }
 </script>
