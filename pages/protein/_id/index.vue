@@ -93,8 +93,8 @@ export default {
                 chartColors.purple, chartColors.grey, chartColors.maroon,
                 chartColors.navy, chartColors.brown, chartColors.olive, chartColors.teal, chartColors.apricot, chartColors.lavender, chartColors.lime, 
                 chartColors.cyan, chartColors.magenta, chartColors.pink, chartColors.beige, chartColors.mint,],
-            data: [this.A, this.C, this.D, this.E, this.F, this.G, this.H, this.I, this.K, this.L, this.M, this.N, this.P, this.Q, this.R, this.S, this.T, this.V, this.W, this.Y],
-            //data: [5, 3, 4, 2, 6, 8, 7, 5, 4 ,3 , 4, 2 , 4, 5, 9, 7 ,5, 8, 5 ,4 ],
+            //data: [this.A, this.C, this.D, this.E, this.F, this.G, this.H, this.I, this.K, this.L, this.M, this.N, this.P, this.Q, this.R, this.S, this.T, this.V, this.W, this.Y],
+            data: [5, 3, 4, 2, 6, 8, 7, 5, 4 ,3 , 4, 2 , 4, 5, 9, 7 ,5, 8, 5 ,4 ],
             hoverOffser: 4,
             }
           ]

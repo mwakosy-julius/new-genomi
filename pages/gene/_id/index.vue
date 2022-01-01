@@ -60,8 +60,8 @@ export default {
                 {
                   label: 'Nucleotides',
                   backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue],
-                  //data: [50, 30, 40, 20],
-                  data: [this.A, this.C, this.G, this.T],
+                  data: [50, 30, 40, 20],
+                  //data: [this.A, this.C, this.G, this.T],
                   //data: [],
                   hoverOffser: 4,
                   }
