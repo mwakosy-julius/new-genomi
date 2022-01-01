@@ -38,7 +38,7 @@
 
 <script>
 import axios from "axios";
-import search from "./search.vue";
+import search from "./ProteinSearch.vue";
 
 export default {
   components:{
