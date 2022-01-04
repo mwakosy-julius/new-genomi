@@ -3,17 +3,17 @@
       <small>Gene ID: {{ $route.params.id }}</small>
       <hr>
       <div class="container-flex d-flex flex-row">
-        <div class="genetics d-flex col-md-6 card">
+        <div class="genetics d-flex col-md-12 card">
           <div class="card-body">
             {{ gene }}
           </div>
           <p class="card-footer"><strong> GC Content: {{ GC }}%</strong></p>
         </div>
-        <div class="genetics d-flex col-md-6 card">
+        <!--<div class="genetics d-flex col-md-6 card">
           <div class="card-body">
             <Doughnut :data="graph.ChartData" :options="graph.ChartOptions" :height=400 />
           </div>          
-        </div>
+        </div>-->
       </div>
     </div>
 </template>

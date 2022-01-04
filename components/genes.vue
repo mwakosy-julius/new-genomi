@@ -70,7 +70,8 @@ export default {
       }
     };
 
-    try {
+    try {    integrity: "sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+
       const res = await axios.get(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&term=${text.replace(/ /g, '+')}&rettype=fasta&retmode=json&retmax=10`, config);
       let result = res.data.esearchresult.idlist;
       this.list = result;
