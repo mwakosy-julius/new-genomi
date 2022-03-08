@@ -1,20 +1,24 @@
 <template>
-    <div>
-      <small>Protein ID: {{ $route.params.id }}</small>
-      <hr>
-      <div class="container-flex d-flex flex-row">
-        <div class="genetics d-flex col-md-12 card">
+  <div>
+    <small>Protein ID: {{ $route.params.id }}</small>
+    <hr>
+    <div class="row d-flex justify-content-between">
+      <div class="genetics col-sm-6 p-0 m-2">
+        <div class="card">
           <div class="card-body">
             {{ gene }}
           </div>
         </div>
-        <!--<div class="genetics d-flex col-md-6 card">
+      </div>
+      <div class="genetics col-sm-5 p-0 m-2">
+        <div class="card">
           <div class="card-body">
-            <BarChart :data="graph.ChartData" :options="graph.ChartOptions" :height='400' />
-          </div>          
-        </div>-->
+            <BarChart :data="ChartData" :options="ChartOptions" :height=400 />
+          </div>
+        </div>          
       </div>
     </div>
+  </div>
 </template>
 <script>
 const chartColors = {
@@ -52,9 +56,7 @@ export default {
 
   data(){
     return{
-        gene: {},
-        A: "",
-        C: "",
+        gene: {},A: "",C: "",
         D: "",
         E: "",
         F: "",
@@ -73,60 +75,12 @@ export default {
         V: "",
         W: "",
         Y: "",
-        
-        get graph(){
-          return{
-            ChartData:{
-              labels: ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'],
-              datasets: [
-                {
-                  label: 'Amino Acids',
-                  backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue, chartColors.orange, 
-                      chartColors.purple, chartColors.grey, chartColors.maroon,
-                      chartColors.navy, chartColors.brown, chartColors.olive, chartColors.teal, chartColors.apricot, chartColors.lavender, chartColors.lime, 
-                      chartColors.cyan, chartColors.magenta, chartColors.pink, chartColors.beige, chartColors.mint,],
-                  //data: [this.A, this.C, this.D, this.E, this.F, this.G, this.H, this.I, this.K, this.L, this.M, this.N, this.P, this.Q, this.R, this.S, this.T, this.V, this.W, this.Y],
-                  data: [5, 3, 4, 2, 6, 8, 7, 5, 4 ,3 , 4, 2 , 4, 5, 9, 7 ,5, 8, 5 ,4 ],
-                  hoverOffser: 4,
-                  }
-                ]
-            },
-            ChartOptions:{
-              responsive: true,
-              legend: {
-                      display: true,
-                  },
-              title: {
-                    display: true,
-                    text: 'Amino Acid Content'
-                  },
-              scales: {
-                xAxes: [
-                  {
-                    gridLines: {
-                      display: false
-                    }
-                  }
-                ],
-                yAxes: [
-                  {
-                    ticks: {
-                      beginAtZero: true
-                    },
-                    gridLines: {
-                      display: false
-                    }
-                  }
-                ]
-              }
-            },
-          }
-        },
+        ChartData:{},ChartOptions:{},
     }
       
   },
   
-  async created(){
+  async fetch(){
     const config = {
       headers:{
         Accept: "application/json"
@@ -158,6 +112,51 @@ export default {
       this.V = (theGene.match(/\V/g) || []).length;
       this.W = (theGene.match(/\W/g) || []).length;
       this.Y = (theGene.match(/\Y/g) || []).length;
+      this.ChartData={
+              labels: ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'],
+              datasets: [
+                {
+                  label: 'Amino Acids',
+                  backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue, chartColors.orange, 
+                      chartColors.purple, chartColors.grey, chartColors.maroon,
+                      chartColors.navy, chartColors.brown, chartColors.olive, chartColors.teal, chartColors.apricot, chartColors.lavender, chartColors.lime, 
+                      chartColors.cyan, chartColors.magenta, chartColors.pink, chartColors.beige, chartColors.mint,],
+                  //data: [this.A, this.C, this.D, this.E, this.F, this.G, this.H, this.I, this.K, this.L, this.M, this.N, this.P, this.Q, this.R, this.S, this.T, this.V, this.W, this.Y],
+                  data: [5, 3, 4, 2, 6, 8, 7, 5, 4 ,3 , 4, 2 , 4, 5, 9, 7 ,5, 8, 5 ,4 ],
+                  hoverOffser: 4,
+                  }
+                ]
+            };
+        this.ChartOptions={
+              responsive: true,
+              legend: {
+                      display: true,
+                  },
+              title: {
+                    display: true,
+                    text: 'Amino Acid Content'
+                  },
+              scales: {
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false
+                    }
+                  }
+                ],
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true
+                    },
+                    gridLines: {
+                      display: false
+                    }
+                  }
+                ]
+              }
+            };
+        
     }catch (err){
       console.log(err)
     }

@@ -22,7 +22,7 @@
 
       <main class="d-flex col-md-9 ms-sm-auto col-lg-10 px-md-4" role="main">
         <div class="container-fluid">
-          <div v-for="(id, index) in list" :key="id" class="gene">
+          <div v-for="(id, index) in list" :key="id" class="gene" id="links">
             <nuxt-link :to="'gene/' + id">{{listid[index]}}</nuxt-link>
           </div>
         </div>
@@ -147,6 +147,10 @@ export default {
   color: #333;
 }
 
+.sidebar .nav-link:hover{
+  color: #2470dc;
+}
+
 .sidebar .nav-link.active {
   color: #2470dc;
 }
@@ -159,5 +163,12 @@ export default {
     border: 0.1rem dotted #ccc;
     margin:1rem 0.5rem;
     padding: 0.5rem;
+    text-decoration: none;
 }
+
+#links{
+  font: 400;
+  color:#333;
+}
+
 </style>

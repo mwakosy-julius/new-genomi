@@ -14,7 +14,7 @@
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="./protein">
+            <nuxt-link class="nav-link active" to="./protein">
               Protein
             </nuxt-link>
           </li>

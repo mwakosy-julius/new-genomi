@@ -1,21 +1,25 @@
 <template>
-    <div>
-      <small>Gene ID: {{ $route.params.id }}</small>
-      <hr>
-      <div class="container-flex d-flex flex-row">
-        <div class="genetics d-flex col-md-12 card">
+  <div>
+    <small>Gene ID: {{ $route.params.id }}</small>
+    <hr>
+    <div class="row d-flex justify-content-between">
+      <div class="genetics col-sm-6 p-0 m-2">
+        <div class="card">
           <div class="card-body">
             {{ gene }}
           </div>
           <p class="card-footer"><strong> GC Content: {{ GC }}%</strong></p>
         </div>
-        <!--<div class="genetics d-flex col-md-6 card">
+      </div>
+      <div class="genetics col-sm-5 p-0 m-2">
+        <div class="card">
           <div class="card-body">
-            <Doughnut :data="graph.ChartData" :options="graph.ChartOptions" :height=400 />
-          </div>          
-        </div>-->
+            <Doughnut :data="ChartData" :options="ChartOptions" :height=400 />
+          </div>
+        </div>          
       </div>
     </div>
+  </div>
 </template>
 <script>
 const chartColors = {
@@ -31,62 +35,16 @@ const chartColors = {
 import axios from "axios";
 import Doughnut from "../../../components/Doughnut.vue";
 
-
 export default {
   components:{
     Doughnut
   },
-
-  data(){
-    return{
-        gene: {},
-        Total: "",
-        GC: "",
-        G: "",
-        C: "",
-        T: "",
-        A: "",
-        
-        get graph(){
-          return {
-            ChartData : {
-              labels: ['A', 'C', 'G', 'T'],
-              datasets: [
-                {
-                  label: 'Nucleotides',
-                  backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue],
-                  data: [50, 30, 40, 20],
-                  //data: [this.A, this.C, this.G, this.T],
-                  //data: [],
-                  hoverOffser: 4,
-                  }
-                ]
-            },
-            ChartOptions : {
-              responsive: true,
-              legend: {
-                      display: true,
-                  },
-              title: {
-                    display: true,
-                    text: 'Nucleotide Content'
-                  },responsive: true,
-              legend: {
-                      display: true,
-                  },
-              title: {
-                    display: true,
-                    text: 'Nucleotide Content'
-                  },   
-            },
-          }
-        }
-        
-    }
-      
-  },
-
-  async created(){
+  data:()=>({
+    gene: {},A:{},C:{},G:{},T:{}, GC:{},
+    ChartData:{},ChartOptions:{},
+  }), 
+  
+  async fetch(){
     const config = {
       headers:{
         Accept: "application/json"
@@ -98,16 +56,45 @@ export default {
       let theGene = res.data.split("\n").slice(1).join("");
       this.gene = res.data.split('\n').join('');
       this.Total = theGene.length;
-      this.A = (theGene.match(/\A/g) || []).length;;
+      this.A = (theGene.match(/\A/g) || []).length;
       this.T = (theGene.match(/\T/g) || []).length;
       this.G = (theGene.match(/\G/g) || []).length;
       this.C = (theGene.match(/\C/g) || []).length;
       this.GC = Math.round((this.G + this.C) / this.Total * 100);
-    }catch (err){
-      console.log(err)
-    }
-  }, 
-  
+      this.ChartData={
+        labels: ['A', 'C', 'G', 'T'],
+        datasets: [
+          {
+            label: 'Nucleotides',
+            backgroundColor: [chartColors.red, chartColors.green, chartColors.yellow, chartColors.blue],
+            data: [this.A, this.C, this.G, this.T],
+            //data: [A, C, G, T],
+            //data: [50,65,12,90],
+            hoverOffser: 4,
+            }
+          ]
+        };
+      this.ChartOptions={
+        responsive: true,
+        legend: {
+            display: true,
+          },
+        title: {
+          display: true,
+          text: 'Nucleotide Content'
+      },responsive: true,
+        legend: {
+                display: true,
+            },
+        title: {
+              display: true,
+              text: 'Nucleotide Content'
+            },   
+      };
+        }catch (err){
+          console.log(err)
+        }
+      },
 }
 </script>
 
