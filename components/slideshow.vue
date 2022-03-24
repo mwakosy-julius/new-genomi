@@ -68,4 +68,9 @@ img{
 	height: 40rem;
 	margin: 1rem;
 }
+@media only screen and (max-width: 480px) {
+  img {
+    width: 100%;
+  }
+}
 </style>
