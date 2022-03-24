@@ -64,8 +64,8 @@ head(){
 img{
 	display: flex;
 	justify-content: center;
-	width: 100rem;
-	height: 50rem;
+	width: 87rem;
+	height: 40rem;
 	margin: 1rem;
 }
 </style>
