@@ -70,7 +70,9 @@ img{
 }
 @media only screen and (max-width: 480px) {
   img {
-    width: 100%;
+    width: auto;
+    margin: 0rem;
+    height: auto;
   }
 }
 </style>
