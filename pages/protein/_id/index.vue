@@ -130,7 +130,7 @@ export default {
         this.ChartOptions={
               responsive: true,
               legend: {
-                      display: true,
+                      display: false,
                   },
               title: {
                     display: true,
