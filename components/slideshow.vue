@@ -62,9 +62,7 @@ img{
 }
 @media only screen and (max-width: 480px) {
   img {
-    width: auto;
     margin: 0rem;
-    height: auto;
   }
 }
 </style>

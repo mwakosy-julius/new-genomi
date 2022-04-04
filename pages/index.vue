@@ -13,16 +13,20 @@
         <div class="col-md-5 p-lg-5 mx-auto my-5">
           <h1 class="display-4 fw-normal">New Genomi</h1>
           <p class="lead fw-normal">Bioinformatics tool for Searching Gene and Protein Sequences</p>
-          <nuxt-link class="btn btn-outline-secondary" to="./gene">Let's Get Started</nuxt-link>
+          <nuxt-link class="btn btn-outline-secondary" to="./gene">Get Started</nuxt-link>
         </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>
         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
       </div>
 
-      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3" id="mobile">
+      <div v-if="!isMobile" class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3" id="mobile">
         <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
           <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: auto; border-radius: 21px 21px 0 0;"><slideshow /></div>
         </div>
+      </div>
+
+      <div v-else class="d-flex justify-content-center">
+        <div><images /></div>
       </div>
     </main>
   </div>
@@ -30,9 +34,12 @@
 
 <script>
 import slideshow from "../components/slideshow.vue";
+import images from "../components/images.vue";
+
 export default {
   components:{
     slideshow,
+    images
   },
   head(){
     return{
@@ -45,7 +52,17 @@ export default {
         }
       ]
     };
-  }
+  },
+  methods: {
+    isMobile() {
+        if( screen.width <= 480 ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+},
   
 };
 </script>
