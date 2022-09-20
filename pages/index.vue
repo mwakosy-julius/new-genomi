@@ -33,13 +33,9 @@
 </template>
 
 <script>
-import slideshow from "../components/slideshow.vue";
-import images from "../components/images.vue";
 
 export default {
   components:{
-    slideshow,
-    images
   },
   head(){
     return{
