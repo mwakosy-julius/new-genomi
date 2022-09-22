@@ -35,8 +35,7 @@
 <script>
 
 export default {
-  components:{
-  },
+  
   head(){
     return{
       title: "New Genomi",
