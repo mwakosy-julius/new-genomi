@@ -18,16 +18,6 @@
         <div class="product-device shadow-sm d-none d-md-block"></div>
         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
       </div>
-
-      <div v-if="!isMobile" class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3" id="mobile">
-        <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: auto; border-radius: 21px 21px 0 0;"><slideshow /></div>
-        </div>
-      </div>
-
-      <div v-else class="d-flex justify-content-center">
-        <div><images /></div>
-      </div>
     </main>
   </div>
 </template>
@@ -48,16 +38,6 @@ export default {
       ]
     };
   },
-  methods: {
-    isMobile() {
-        if( screen.width <= 480 ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-},
   
 };
 </script>
